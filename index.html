@@ -108,17 +108,20 @@ h2{font-size:clamp(2rem,3.2vw,3rem);line-height:1.14;letter-spacing:-.045em;font
 .skill-card h3{font-size:1.03rem;margin-bottom:18px;letter-spacing:-.02em}
 .skill-pills{display:flex;flex-wrap:wrap;gap:8px}
 .skill-pill{display:inline-flex;font-size:.78rem;color:#cad8df;line-height:1.35;background:#1d2b38;border:1px solid #354552;border-radius:6px;padding:8px 11px}
-.interface-panel{margin-top:18px;padding:28px;border:1px solid #37645a;border-radius:12px;background:linear-gradient(115deg,rgba(31,83,73,.24),rgba(18,37,44,.26))}
-.interface-top{display:flex;gap:20px;align-items:center;justify-content:space-between;margin-bottom:24px}
-.interface-top h3{font-size:1.17rem;letter-spacing:-.02em;margin-bottom:4px}
-.interface-top p{color:var(--muted);font-size:.88rem;margin:0}
-.interface-count{font:.74rem var(--font-mono);color:var(--accent);border:1px solid #416d61;border-radius:999px;padding:7px 13px;white-space:nowrap}
-.interface-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.interface-col{padding:16px 18px;border-radius:9px;border:1px solid #36514d;background:rgba(10,27,28,.6)}
-.interface-col h4{color:#90b1a9;font:.69rem var(--font-mono);text-transform:uppercase;letter-spacing:.09em;margin-bottom:12px}
-.interface-tags{display:flex;flex-wrap:wrap;gap:7px}
-.interface-tags span{font-size:.84rem;font-weight:700;background:#21483f;color:#d7f5ed;border-radius:5px;padding:6px 10px}
-.interface-note{font-size:.75rem;color:var(--faint);line-height:1.6;margin:16px 0 0}
+/* Communications are a core engineering skill, not a finite protocol counter. */
+.comms-card{margin-top:18px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:clamp(24px,3vw,32px)}
+.comms-heading{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+.comms-heading h3{font-size:1.12rem;letter-spacing:-.02em;margin:0}
+.comms-kicker{color:var(--accent);font:500 .68rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.comms-intro{font-size:.9rem;line-height:1.75;color:var(--muted);max-width:80ch;margin:0 0 22px}
+.comms-areas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.comms-area{border-top:1px solid #3a4d58;padding:13px 10px 0 0;min-width:0}
+.comms-area strong{display:block;font-size:.82rem;line-height:1.45;color:#d6e8e5;margin-bottom:5px}
+.comms-area span{display:block;font-size:.76rem;color:var(--faint);line-height:1.65}
+.experience-group-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-bottom:11px}
+.experience-group-heading h4{margin:0}
+.experience-site{display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid #4e8a7c;color:var(--accent);font:500 .73rem var(--font-mono);line-height:1.65;white-space:nowrap;text-underline-offset:4px;transition:color .16s,border-color .16s}
+.experience-site:hover{color:#b4f6e7;border-color:#b4f6e7}
 .experience-list{display:grid;gap:18px}
 .experience-card{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:clamp(25px,3.5vw,40px)}
 .experience-top{display:flex;justify-content:space-between;gap:32px;margin-bottom:26px}
@@ -173,11 +176,11 @@ h2{font-size:clamp(2rem,3.2vw,3rem);line-height:1.14;letter-spacing:-.045em;font
  .hero{padding:56px 0 55px}h1{font-size:clamp(2.85rem,10vw,4.5rem)}
  .focus-grid{grid-template-columns:1fr}.focus-item{padding:18px 0;border-bottom:1px solid var(--line);border-right:0}.focus-item:last-child{border-bottom:0}
  .section{padding:72px 0}.section-head{display:block}.section-intro{margin:17px 0 0}.about-layout{grid-template-columns:1fr;gap:28px}
- .skills-grid,.project-grid,.education-grid{grid-template-columns:1fr}.interface-grid{grid-template-columns:1fr}.interface-col{padding:13px 15px}
+ .skills-grid,.project-grid,.education-grid{grid-template-columns:1fr}.comms-areas{grid-template-columns:repeat(2,minmax(0,1fr))}
  .experience-top{display:block}.experience-date{text-align:left;margin-top:12px}.panel-bottom{align-items:flex-start}
  .education-degree .edu-note{margin-top:22px}
 }
-@media(max-width:420px){.hero-language{width:100%;justify-content:space-between}.language-row{align-items:flex-start;flex-direction:column;gap:9px}.nav a:first-child{display:none}.panel-header{padding:15px}.panel-body{padding:8px 8px 2px}.panel-bottom{flex-direction:column;gap:15px}.interface-top{align-items:flex-start;flex-direction:column;gap:12px}}
+@media(max-width:420px){.comms-areas{grid-template-columns:1fr}.hero-language{width:100%;justify-content:space-between}.language-row{align-items:flex-start;flex-direction:column;gap:9px}.nav a:first-child{display:none}.panel-header{padding:15px}.panel-body{padding:8px 8px 2px}.panel-bottom{flex-direction:column;gap:15px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 </style>
 </head>
@@ -274,22 +277,26 @@ h2{font-size:clamp(2rem,3.2vw,3rem);line-height:1.14;letter-spacing:-.045em;font
       <div class="container">
         <div class="section-head"><div><span class="section-eyebrow">02 / Expertise</span><h2>Technical focus</h2></div><p class="section-intro">A practical stack spanning control algorithms, firmware, electrical interfaces and the tools to bring products to life.</p></div>
         <div class="skills-grid"><article class="skill-card"><h3>Motor control</h3><div class="skill-pills"><span class="skill-pill">FOC — PMSM &amp; induction</span><span class="skill-pill">Sensorless vector control</span><span class="skill-pill">Motor autotuning</span><span class="skill-pill">SVPWM</span><span class="skill-pill">PID control</span><span class="skill-pill">VFDs</span><span class="skill-pill">Elevator &amp; pump drives</span></div></article><article class="skill-card"><h3>Embedded firmware</h3><div class="skill-pills"><span class="skill-pill">Embedded C/C++</span><span class="skill-pill">STM32</span><span class="skill-pill">ESP32</span><span class="skill-pill">AVR / ATmega</span><span class="skill-pill">FreeRTOS</span><span class="skill-pill">State machines</span><span class="skill-pill">IAP &amp; safe bootloaders</span></div></article><article class="skill-card"><h3>Power electronics</h3><div class="skill-pills"><span class="skill-pill">Buck / boost / flyback</span><span class="skill-pill">AC-DC &amp; DC-AC</span><span class="skill-pill">BLDC drives</span><span class="skill-pill">Solar inverters</span><span class="skill-pill">MPPT</span></div></article><article class="skill-card"><h3>Tools &amp; platforms</h3><div class="skill-pills"><span class="skill-pill">Git</span><span class="skill-pill">Altium Designer</span><span class="skill-pill">MATLAB</span><span class="skill-pill">.NET / .NET Core</span><span class="skill-pill">Windows Forms</span><span class="skill-pill">Flutter</span></div></article></div>
-        <div class="interface-panel" aria-labelledby="interfaces-heading">
-          <div class="interface-top"><div><h3 id="interfaces-heading">Interfaces &amp; connectivity</h3><p>Clearly grouped rather than reduced to a single animated counter.</p></div><span class="interface-count">7 technologies</span></div>
-          <div class="interface-grid">
-            <div class="interface-col"><h4>Industrial</h4><div class="interface-tags"><span>CAN</span><span>RS-485</span></div></div>
-            <div class="interface-col"><h4>Embedded serial</h4><div class="interface-tags"><span>SPI</span><span>I²C</span><span>UART</span></div></div>
-            <div class="interface-col"><h4>Connectivity</h4><div class="interface-tags"><span>USB</span><span>BLE</span></div></div>
+        <article class="comms-card" aria-labelledby="comms-heading">
+          <div class="comms-heading">
+            <h3 id="comms-heading">Communications &amp; interfacing</h3>
+            <span class="comms-kicker">Broad, hands-on experience</span>
           </div>
-          <p class="interface-note">These seven entries include communication protocols, physical interfaces and wireless technology. Encoder interfaces (Sin/Cos and EnDat) are listed separately in the experience details.</p>
-        </div>
+          <p class="comms-intro">I develop communication and interfacing software for embedded products, spanning industrial networks, MCU peripherals, wired and wireless connectivity, and motor-feedback systems. Selected examples include:</p>
+          <div class="comms-areas">
+            <div class="comms-area"><strong>Industrial systems</strong><span>CAN, RS-485 and related integration</span></div>
+            <div class="comms-area"><strong>MCU peripherals</strong><span>SPI, I²C, UART and device drivers</span></div>
+            <div class="comms-area"><strong>Wired &amp; wireless</strong><span>USB, BLE and 2.4 GHz wireless links</span></div>
+            <div class="comms-area"><strong>Feedback interfaces</strong><span>EnDat, Sin/Cos and incremental encoders</span></div>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="section" id="experience">
       <div class="container">
         <div class="section-head"><div><span class="section-eyebrow">03 / Experience</span><h2>Professional work</h2></div><p class="section-intro">Hands-on engineering across motor drives, embedded product development and field-deployed firmware.</p></div>
-        <div class="experience-list"><article class="experience-card"><div class="experience-top"><div><p class="company">Mehbang</p><h3>Senior R&amp;D Engineer — Embedded Systems &amp; Motor Control</h3></div><p class="experience-date">Jul 2022 — Present</p></div><div class="experience-group"><h4>Motor drives &amp; control</h4><ul><li>Developed encoder-based field-oriented control (FOC) for PMSM and induction motors, including current and speed control loops running in real time.</li><li>Built motor parameter identification and autotuning routines to support commissioning and control-model configuration.</li><li>Implemented sensorless vector control for general-purpose induction-motor loads such as fans and pumps, with no encoder feedback.</li><li>Developed an enhanced sensorless control solution for elevators, focused on low-speed behavior, smooth starts and stops, and ride quality.</li><li>Designed a multi-drive pump network with a master/slave architecture and PID-based pressure control across several VFDs.</li><li>Built an off-grid solar pump inverter with on-chip MPPT, running directly from photovoltaic input.</li><li>Integrated Sin/Cos, EnDat, and 5 V/12 V incremental encoders for motor feedback, and implemented IAP-based safe bootloaders for field firmware updates.</li></ul></div><div class="experience-group"><h4>Elevator control systems</h4><ul><li>Developed embedded elevator-control software aligned with EN 81-20, using a state-machine architecture and structured I/O handling.</li><li>Implemented CAN and RS-485 industrial communications alongside SPI, I2C, UART, USB, and BLE peripheral interfaces.</li><li>Built embedded MP3 decoding, playback, and file management for elevator audio, and CAN-based serial indicators using graphical LCD and dot-matrix displays.</li></ul></div><div class="experience-group"><h4>Additional product development</h4><ul><li>Developed a solar-assisted backup power product for air-conditioning during grid outages — a 24–42 V / ~300 W PV source with integrated MPPT, BLDC motor control, and a 220 V/50 Hz output for a water pump.</li></ul></div></article><article class="experience-card"><div class="experience-top"><div><p class="company">Freelance</p><h3>Embedded Hardware &amp; Software Developer</h3></div><p class="experience-date">Apr 2025 — Present</p></div><div class="experience-group"><ul><li>Develop embedded firmware, device drivers, communication interfaces, and hardware/software prototypes for independent clients.</li><li>Work with USB device and driver development and 2.4 GHz wireless communication.</li></ul></div></article></div>
+        <div class="experience-list"><article class="experience-card"><div class="experience-top"><div><p class="company">Mehbang</p><h3>Senior R&amp;D Engineer — Embedded Systems &amp; Motor Control</h3></div><p class="experience-date">Jul 2022 — Present</p></div><div class="experience-group"><div class="experience-group-heading"><h4>Motor drives &amp; control</h4><a class="experience-site" href="https://xima.ir/en" target="_blank" rel="noopener noreferrer" aria-label="Visit XIMA drive control company website (opens in a new tab)">XIMA website <span aria-hidden="true">↗</span></a></div><ul><li>Developed encoder-based field-oriented control (FOC) for PMSM and induction motors, including current and speed control loops running in real time.</li><li>Built motor parameter identification and autotuning routines to support commissioning and control-model configuration.</li><li>Implemented sensorless vector control for general-purpose induction-motor loads such as fans and pumps, with no encoder feedback.</li><li>Developed an enhanced sensorless control solution for elevators, focused on low-speed behavior, smooth starts and stops, and ride quality.</li><li>Designed a multi-drive pump network with a master/slave architecture and PID-based pressure control across several VFDs.</li><li>Built an off-grid solar pump inverter with on-chip MPPT, running directly from photovoltaic input.</li><li>Integrated Sin/Cos, EnDat, and 5 V/12 V incremental encoders for motor feedback, and implemented IAP-based safe bootloaders for field firmware updates.</li></ul></div><div class="experience-group"><div class="experience-group-heading"><h4>Elevator control systems</h4><a class="experience-site" href="https://datis-elevator.ir/en/" target="_blank" rel="noopener noreferrer" aria-label="Visit Datis Elevator company website (opens in a new tab)">Datis Elevator website <span aria-hidden="true">↗</span></a></div><ul><li>Developed embedded elevator-control software aligned with EN 81-20, using a state-machine architecture and structured I/O handling.</li><li>Implemented CAN and RS-485 industrial communications alongside SPI, I2C, UART, USB, and BLE peripheral interfaces.</li><li>Built embedded MP3 decoding, playback, and file management for elevator audio, and CAN-based serial indicators using graphical LCD and dot-matrix displays.</li></ul></div><div class="experience-group"><h4>Additional product development</h4><ul><li>Developed a solar-assisted backup power product for air-conditioning during grid outages — a 24–42 V / ~300 W PV source with integrated MPPT, BLDC motor control, and a 220 V/50 Hz output for a water pump.</li></ul></div></article><article class="experience-card"><div class="experience-top"><div><p class="company">Freelance</p><h3>Embedded Hardware &amp; Software Developer</h3></div><p class="experience-date">Apr 2025 — Present</p></div><div class="experience-group"><ul><li>Develop embedded firmware, device drivers, communication interfaces, and hardware/software prototypes for independent clients.</li><li>Work with USB device and driver development and 2.4 GHz wireless communication.</li></ul></div></article></div>
       </div>
     </section>
 
